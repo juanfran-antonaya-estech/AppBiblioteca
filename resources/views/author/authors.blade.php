@@ -4,7 +4,6 @@
     <div class="container">
         <h1>Autores</h1>
         @if(Auth::user()->role < 10)
-            {{-- TODO: Implementar AuthorMaker --}}
             <livewire:author-maker />
         @endif
         @foreach($authorChunks as $authorChunk)
