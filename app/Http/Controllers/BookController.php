@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -12,23 +13,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('books.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        $authors = Author::all();
+        $books = Book::all()->sortByDesc('created_at');
+        $bookChunks = $books->chunk(3);
+        return view('book.books', compact('books', 'authors', 'bookChunks'));
     }
 
     /**
@@ -36,30 +24,6 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Book $book)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Book $book)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Book $book)
-    {
-        //
+        return view('book.book', compact('book'));
     }
 }

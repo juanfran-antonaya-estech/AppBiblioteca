@@ -14,10 +14,8 @@ class AuthorFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'bio' => $this->faker->word(),
+            'bio' => $this->faker->text(1000),
             'birth_date' => Carbon::now(),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
         ];
     }
 }

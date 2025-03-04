@@ -10,7 +10,7 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        return Author::all();
+        return Author::with('books')->get()->toArray();
     }
 
     public function store(Request $request)

@@ -14,11 +14,9 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->word(),
-            'release_year' => $this->faker->randomNumber(),
-            'status' => $this->faker->boolean(),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'title' => $this->faker->text(20),
+            'release_year' => $this->faker->numberBetween(1900, Carbon::now()->year),
+            'status' => false,
 
             'author_id' => Author::factory(),
         ];

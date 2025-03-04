@@ -16,7 +16,7 @@ class Author extends Model
         'birth_date',
     ];
 
-    public function books(): \Illuminate\Database\Eloquent\Relations\HasMany {
+    public function books() {
         return $this->hasMany(Book::class);
     }
     protected function casts(): array

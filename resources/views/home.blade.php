@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('¡Has iniciado sesión!') }}
+                        <br />
                     <a href="{{ route('index') }}">Volver al índice</a>
                 </div>
             </div>

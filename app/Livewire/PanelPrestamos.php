@@ -8,12 +8,25 @@ use Livewire\Component;
 
 class PanelPrestamos extends Component
 {
+    /**
+     * @var Array<Book>
+     */
     public $lendedList;
+
+    public function mount(){
+        $this->lendedList = Book::where('user_id', Auth::id())->get();
+    }
+
+    public function devolverLibro($id)
+    {
+        $book = Book::find($id);
+        $book->status = false;
+        $book->user_id = null;
+        $book->save();
+        $this->mount();
+    }
     public function render()
     {
-        $this->lendedList = Book::where('status', '=', "1")
-            ->where('user_id', '=', Auth::user()->id)
-            ->get();
         return view('livewire.panel-prestamos');
     }
 }

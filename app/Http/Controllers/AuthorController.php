@@ -12,23 +12,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        $authors = Author::all();
+        $authorChunks = $authors->chunk(3);
+        return view('author.authors', compact('authorChunks', 'authors'));
     }
 
     /**
@@ -36,30 +22,6 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Author $author)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Author $author)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Author $author)
-    {
-        //
+        return view('author.author', compact('author'));
     }
 }
